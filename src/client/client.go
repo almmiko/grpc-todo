@@ -20,10 +20,22 @@ func Boot() {
 	client := pb.NewTodoServiceClient(conn)
 	ctx := context.Background()
 
-	res, err := client.GetTodo(ctx, &pb.TodoRequest{Id: "id"})
+	res, err := client.DeleteTodo(ctx, &pb.TodoRequest{
+		Id: "1",
+	})
 	if err != nil {
 		log.Fatalf("get todo error: %v", err)
 	}
+
+	// res, err := client.CreateTodo(ctx, &pb.CreateTodoRequest{Completed: false, Message: "some", Title: "new todo"})
+	// if err != nil {
+	// 	log.Fatalf("get todo error: %v", err)
+	// }
+
+	// res, err := client.GetTodo(ctx, &pb.TodoRequest{Id: "id"})
+	// if err != nil {
+	// 	log.Fatalf("get todo error: %v", err)
+	// }
 
 	fmt.Println(res)
 }

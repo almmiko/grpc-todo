@@ -5,7 +5,7 @@ package pb;
 service TodoService {
     rpc GetTodos(TodosRequest) returns (TodosResponse) {}
     rpc GetTodo(TodoRequest) returns (TodoResponse) {}
-    rpc CreateTodo(Todo) returns (TodoResponse) {}
+    rpc CreateTodo(CreateTodoRequest) returns (TodoResponse) {}
     rpc UpdateTodo(Todo) returns (TodoResponse) {}
     rpc DeleteTodo(TodoRequest) returns (TodoResponse) {}
 }
@@ -22,6 +22,12 @@ message TodosRequest {}
 
 message TodosResponse {
     repeated Todo todos = 1;
+}
+
+message CreateTodoRequest {
+    bool completed = 1;
+    string title = 2;
+    string message = 3;
 }
 
 message Todo {
